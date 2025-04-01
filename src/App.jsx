@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Counter from './counterApp.jsx'
 
 
 //######  (W-9.4 ) Assignment #1 - Create a LinkedIn notification component that increases by 1 every 5 seconds.	
@@ -277,20 +277,17 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
-
-
-
-
-
-
   return(
     <div>
+
+        <Counter/>
 
     </div>
 
   );
   
 }
+
 
 
 
