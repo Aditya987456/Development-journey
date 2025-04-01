@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Counter from './counterApp.jsx'
+import FetchingData from './fetchData.jsx';
 
 
 //######  (W-9.4 ) Assignment #1 - Create a LinkedIn notification component that increases by 1 every 5 seconds.	
@@ -272,21 +273,38 @@ import Counter from './counterApp.jsx'
 
 
 
-//****************######  (W-9.2) Assignment #1 - Counter Application   ######***********************
+// //****************######  (W-9.2) Assignment #1 - Counter Application   ######***********************
+
+
+// function App() {
+
+//   return(
+//     <div>
+      
+//       <Counter/>
+
+//     </div>
+
+//   );
+// }
+
+
+
+
+
+
+// //****************######  (W-9.2) Assignment #2 -  ######***********************
 
 
 function App() {
 
-  return(
-    <div>
-
-        <Counter/>
-
-    </div>
-
-  );
+    return(
+      <div>
+            <FetchingData/>
+      </div>
   
-}
+    );
+  }
 
 
 
