@@ -272,25 +272,25 @@ import React, { useState, useEffect } from 'react';
 
 
 
-//****************######  (W-9.2) Assignment #2 - Fetching User Data    ######***********************
+//****************######  (W-9.2) Assignment #1 - Counter Application   ######***********************
 
 
-// function App() {
-
-
-
+function App() {
 
 
 
 
-//   return(
-//     <div>
 
-//     </div>
 
-//   );
+
+  return(
+    <div>
+
+    </div>
+
+  );
   
-// }
+}
 
 
 
