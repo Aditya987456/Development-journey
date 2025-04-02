@@ -296,15 +296,29 @@ import FetchingData from './fetchData.jsx';
 // //****************######  (W-9.2) Assignment #2 Fetching User Data ######***********************
 
 
+// function App() {
+
+//     return(
+//       <div>
+//             <FetchingData/>
+//       </div>
+  
+//     );
+//   }
+
+
+import Appp from './learningCodes.jsx';
+
 function App() {
 
     return(
-      <div>
-            <FetchingData/>
-      </div>
-  
-    );
-  }
+        <div>
+            <Appp/>
+
+        </div> 
+    )
+    
+}
 
 
 
