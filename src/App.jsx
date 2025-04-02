@@ -307,18 +307,18 @@ import FetchingData from './fetchData.jsx';
 //   }
 
 
-// import Appp from './learningCodes.jsx';
+import Appp from './learningCodes.jsx';
 
-// function App() {
+function App() {
 
-//     return(
-//         <div>
-//             <Appp/>
+    return(
+        <div>
+            <Appp/>
 
-//         </div> 
-//     )
+        </div> 
+    )
     
-// }
+}
 
 
 
