@@ -56,41 +56,109 @@ import { useState,useEffect } from "react";
 
 // //**********************    Collapsible Section    ****************************/
 
-function Collapse({ title,children}) {
+// function Collapse({ title,children}) {
 
-    const [collapsible, setCollapsible]=useState(false)
+//     const [collapsible, setCollapsible]=useState(false)
+
+//     return(
+
+//         <div>
+
+//             <button onClick={()=>setCollapsible(!collapsible)}>
+//                 {title} {collapsible? '-':'+'}
+//             </button>
+
+//                 {collapsible && <div>{children}</div>}
+            
+//         </div>
+//     )
+    
+// }
+
+
+
+// function Appp() {
+
+//     return(
+
+//         <div>
+
+//             <Collapse title='button-1'>
+//                 <p>This is the result after clicking button-1</p>
+//             </Collapse>
+
+//             <Collapse title='button-2'>
+//                 <p>This is the result after clicking button-2</p>
+//             </Collapse>
+
+
+//         </div>
+//     )
+    
+// }
+
+
+
+
+// //--------- -----------------------   ERROR Boundary  ---------------------------------- */
+import ErrorBoundary from './ErrorBoundary.jsx';
+
+
+const BuggyComponent = () => {
+    throw new Error("I crashed!");
+};
+
+const ParentsComponent=({children, style})=>{
 
     return(
+        <div 
+        style={{
+            height:100,
+             margin:10,
+             borderRadius:10,
+             boxShadow: '2px 2px 5px rgba(14, 29, 237, 0.3)',
+             ...style
 
-        <div>
-
-            <button onClick={()=>setCollapsible(!collapsible)}>
-                {title} {collapsible? '-':'+'}
-            </button>
-
-                {collapsible && <div>{children}</div>}
+             }}> 
             
+            {children}   
+
         </div>
     )
-    
+
 }
 
 
 
 function Appp() {
 
+    
     return(
-
         <div>
 
-            <Collapse title='button-1'>
-                <p>This is the result after clicking button-1</p>
-            </Collapse>
+            <ErrorBoundary>
+                <ParentsComponent style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                    <h1>box-1</h1>
+                    <p><BuggyComponent/></p>
+                </ParentsComponent>
+            </ErrorBoundary>
+           
 
-            <Collapse title='button-2'>
-                <p>This is the result after clicking button-2</p>
-            </Collapse>
 
+
+            <ErrorBoundary>
+                <ParentsComponent>
+                    <h1>box-2</h1>
+                    <p><BuggyComponent/></p>
+                </ParentsComponent>
+            </ErrorBoundary>
+
+
+
+
+            <ParentsComponent>
+                <h1>box-3</h1>  
+            </ParentsComponent>
 
         </div>
     )
