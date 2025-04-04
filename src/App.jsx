@@ -69,11 +69,6 @@ import FetchingData from './fetchData.jsx';
 
 
 
-
-
-
-
-
 //  // ####### (W-9.3) Assignment #1 - Create linkedin ProfileCard Component Just after the Post Component
 
 // function App() {
