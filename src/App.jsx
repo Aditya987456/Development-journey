@@ -303,7 +303,10 @@ import FetchingData from './fetchData.jsx';
 //   }
 
 
-import Appp from './learningCodes.jsx';
+//import Appp from './learningCodes.jsx';
+
+import Appp from './week-10-react.jsx';
+
 
 function App() {
 

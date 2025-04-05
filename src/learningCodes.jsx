@@ -101,72 +101,72 @@ import { useState,useEffect } from "react";
 
 
 // //--------- -----------------------   ERROR Boundary  ---------------------------------- */
-import ErrorBoundary from './ErrorBoundary.jsx';
+// import ErrorBoundary from './ErrorBoundary.jsx';
 
 
-const BuggyComponent = () => {
-    throw new Error("I crashed!");
-};
+// const BuggyComponent = () => {
+//     throw new Error("I crashed!");
+// };
 
-const ParentsComponent=({children, style})=>{
+// const ParentsComponent=({children, style})=>{
 
-    return(
-        <div 
-        style={{
-            height:100,
-             margin:10,
-             borderRadius:10,
-             boxShadow: '2px 2px 5px rgba(14, 29, 237, 0.3)',
-             ...style
+//     return(
+//         <div 
+//         style={{
+//             height:100,
+//              margin:10,
+//              borderRadius:10,
+//              boxShadow: '2px 2px 5px rgba(14, 29, 237, 0.3)',
+//              ...style
 
-             }}> 
+//              }}> 
             
-            {children}   
+//             {children}   
 
-        </div>
-    )
+//         </div>
+//     )
 
-}
+// }
 
 
 
-function Appp() {
+// function Appp() {
 
     
-    return(
-        <div>
+//     return(
+//         <div>
 
-            <ErrorBoundary>
-                <ParentsComponent style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    <h1>box-1</h1>
-                    <p><BuggyComponent/></p>
-                </ParentsComponent>
-            </ErrorBoundary>
+//             <ErrorBoundary>
+//                 <ParentsComponent style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+//                     <h1>box-1</h1>
+//                     <p><BuggyComponent/></p>
+//                 </ParentsComponent>
+//             </ErrorBoundary>
            
 
 
 
-            <ErrorBoundary>
-                <ParentsComponent>
-                    <h1>box-2</h1>
-                    <p><BuggyComponent/></p>
-                </ParentsComponent>
-            </ErrorBoundary>
+//             <ErrorBoundary>
+//                 <ParentsComponent>
+//                     <h1>box-2</h1>
+//                     <p><BuggyComponent/></p>
+//                 </ParentsComponent>
+//             </ErrorBoundary>
 
 
 
 
-            <ParentsComponent>
-                <h1>box-3</h1>  
-            </ParentsComponent>
+//             <ParentsComponent>
+//                 <h1>box-3</h1>  
+//             </ParentsComponent>
 
-        </div>
-    )
+//         </div>
+//     )
     
-}
+// }
 
 
 
 
 
-export default Appp;
+//export default Appp;
