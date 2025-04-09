@@ -168,54 +168,108 @@ import { BrowserRouter, Route, Routes, Link  } from "react-router-dom";
 
 // trying to create stop and start counter
 
+
+
+//****  ######             Clock with start and stop functionality                      #######  */
+// function Appp() {
+
+//     const [count, setCount]=useState(0)
+    
+//     const timerID=useRef(0)
+
+
+
+
+// const StartCounter=()=>{
+//     if (timerID.current) {
+//         clearInterval(timerID.current);
+//     }
+
+//     let value=setInterval(() => {
+//         setCount(c=>c+1)
+//     }, 100);
+    
+//     console.log('startcounter wala inside',count)
+//     timerID.current=value
+// }
+
+
+// console.log('bahar wala:',count)
+
+// const StopCounter=()=>{
+//     console.log('timerID:',timerID)
+//     clearInterval(timerID.current)
+//     console.log('stopcounter wala',count)
+// }
+
+
+
+
+
+
+
+
+//     return(
+//         <div>
+//             <div>{count}</div>
+//             <button onClick={StartCounter}>Start</button>
+//             <button onClick={StopCounter}>Stop</button>
+//         </div>
+//     )
+    
+// }
+
+
+
+console.log('just to avoid meetup of both.')
+
+//* ###################    **  Focussing on an input box  **     ###################
+
+
+// function Appp() {
+
+//     const inputName=useRef(null);
+
+
+//     function focusShift() {
+//         inputName.current.focus();   
+//     }
+
+
+
+//     return (
+//         <div>
+//             <input ref={inputName} type="text" placeholder="Enter your name..." />
+//             <input type="password" name="" id="" placeholder="Enter your password..." />
+//             <button onClick={focusShift}>Submit</button>
+        
+//         </div>
+//     )
+// }
+
+
+console.log('just to avoid meetup of both.')
+
+
+
+//* ###################    **  Scroll to bottom  **     ###################
+
+
 function Appp() {
-
-    const [count, setCount]=useState(0)
-    
-    const timerID=useRef(0)
-
-
-
-
-const StartCounter=()=>{
-    if (timerID.current) {
-        clearInterval(timerID.current);
-    }
-
-    let value=setInterval(() => {
-        setCount(c=>c+1)
-    }, 1000);
-    
-    console.log('startcounter wala inside',count)
-    timerID.current=value
-}
-
-
-console.log('bahar wala:',count)
-
-const StopCounter=()=>{
-    console.log('timerID:',timerID)
-    clearInterval(timerID.current)
-    console.log('stopcounter wala',count)
-}
-
-
-
-
-
 
 
 
     return(
         <div>
-            <div>{count}</div>
-            <button onClick={StartCounter}>Start</button>
-            <button onClick={StopCounter}>Stop</button>
+            
         </div>
     )
     
 }
+
   
+
+
   
 
 
