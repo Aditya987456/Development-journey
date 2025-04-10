@@ -253,19 +253,9 @@ console.log('just to avoid meetup of both.')
 
 
 //* ###################    **  Scroll to bottom  **     ###################
+// in the scroll.jsx
 
 
-function Appp() {
-
-
-
-    return(
-        <div>
-            
-        </div>
-    )
-    
-}
 
   
 

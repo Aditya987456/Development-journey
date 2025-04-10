@@ -306,13 +306,14 @@ import FetchingData from './fetchData.jsx';
 //import Appp from './learningCodes.jsx';
 
 import Appp from './week-10-react.jsx';
+import ScrollOnMount from './scroll.jsx';
 
 
 function App() {
 
     return(
         <div>
-            <Appp/>
+            <ScrollOnMount/>
 
 
         </div> 
