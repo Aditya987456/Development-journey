@@ -1,6 +1,6 @@
 //----------------------------------       WEEK-10 ---> react        -------------------------------------
 
-import { useState,useEffect,useRef } from "react";
+import { useState,useEffect,useRef, useContext ,createContext } from "react";
 import { BrowserRouter, Route, Routes, Link  } from "react-router-dom";
 
 
@@ -267,55 +267,175 @@ console.log('\n')
 
 
 
-function Appp() {
-    return(
-        <div>
-            <Light/>
-        </div>
-    )  
-}
+// function Appp() {
+//     return(
+//         <div>
+//             <Light/>
+//         </div>
+//     )  
+// }
 
+// function Light() {
 
-function Light() {
+//     const [ lightON, setLightON ]=useState(false)
 
-    const [ lightON, setLightON ]=useState(false)
+//     return(
+//         <div>
+//             <Bulb bulbstatus={lightON} />
+//             <BulbSwitch setLightON={setLightON} currentStatus={lightON}/>
+//         </div>
+//     )  
+// }
 
-    return(
-        <div>
-            <Bulb bulbstatus={lightON} />
-            <BulbSwitch setLightON={setLightON} currentStatus={lightON}/>
-        </div>
-    )  
-}
+// function Bulb({bulbstatus}) {
 
+//     return(
+//         <div>
+//             {bulbstatus? <img src="https://img.icons8.com/?size=100&id=20182&format=png&color=000000" /> : 
+//                          <img src="https://img.icons8.com/?size=100&id=20183&format=png&color=000000"/>
+//         }
+//         </div>
+//     )  
+// }
 
-function Bulb({bulbstatus}) {
+// function BulbSwitch({setLightON, currentStatus}) {
+//     console.log('Switch:',currentStatus)
 
-    return(
-        <div>
-            {bulbstatus? <img src="https://img.icons8.com/?size=100&id=20182&format=png&color=000000" /> : 
-                         <img src="https://img.icons8.com/?size=100&id=20183&format=png&color=000000"/>
-        }
-        </div>
-    )  
-}
-
-
-
-function BulbSwitch({setLightON, currentStatus}) {
-    console.log('Switch:',currentStatus)
-
-    function onOff() {
-        setLightON(statuss=>!statuss)
+//     function onOff() {
+//         setLightON(statuss=>!statuss)
         
-    }
-    return(
+//     }
+//     return(
+//         <div>
+//             <button style={{marginTop:20}} onClick={onOff}>{currentStatus?'ON':'OFF'}</button>
+//         </div>
+//     )
+    
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+//###  above problems using contextAPI....................
+
+
+/*  ContextAPI  things do in three steps-
+
+    step-1: create context
+    step-2: provider
+    step-3: consumer
+
+*/
+
+
+//---------  1. create context--
+const BulbContext=createContext()
+
+
+
+//---------   2. making provider inside a function in which context.provider is there it helps to write clean code and understand it.
+
+function BulbProvider({children}) {
+
+    const [bulbON, setBulbON ]=useState(true)
+
+    return <div>
+
+        <BulbContext.Provider value={{
+            bulbON:bulbON,
+            setBulbON:setBulbON
+        }}>
+
+            {children}
+        </BulbContext.Provider>
+
+    </div>
+    
+}
+
+
+function Appp() {
+
+    return (
         <div>
-            <button style={{marginTop:20}} onClick={onOff}>{currentStatus?'ON':'OFF'}</button>
+            <BulbProvider>
+                <Light/>
+            </BulbProvider>
         </div>
     )
     
 }
+
+
+
+
+function Light() {
+
+    return(
+        <div>
+            <Bulb/>
+            <BulbSwitch/>
+        </div>
+    )
+}
+
+
+
+
+//$$$ ---------------       3. consume context using useContext() hook-------------------
+function Bulb() {
+
+    const { bulbON } = useContext(BulbContext)
+
+    return(
+        <div>
+            {bulbON? <img src="https://img.icons8.com/?size=100&id=20182&format=png&color=000000" /> : 
+                         <img src="https://img.icons8.com/?size=100&id=20183&format=png&color=000000"/>
+        }
+        </div>
+    )  
+    
+}
+
+
+function BulbSwitch() {
+    const {setBulbON, bulbON} = useContext(BulbContext)
+
+        function onOff() {
+        setBulbON(statuss=>!statuss)
+        
+    }
+
+    return(
+        <div>
+            <button style={{marginTop:20}} onClick={onOff}>{bulbON?'ON':'OFF'}</button>
+        </div>
+    )
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
