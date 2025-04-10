@@ -256,8 +256,67 @@ console.log('just to avoid meetup of both.')
 // in the scroll.jsx
 
 
+console.log('\n')
 
-  
+
+
+
+
+//-------------------  Rolling up the state, unoptimal re-renders   --------------------------------- */
+//LCA -> lowest common ancestor.
+
+
+
+function Appp() {
+    return(
+        <div>
+            <Light/>
+        </div>
+    )  
+}
+
+
+function Light() {
+
+    const [ lightON, setLightON ]=useState(false)
+
+    return(
+        <div>
+            <Bulb bulbstatus={lightON} />
+            <BulbSwitch setLightON={setLightON} currentStatus={lightON}/>
+        </div>
+    )  
+}
+
+
+function Bulb({bulbstatus}) {
+
+    return(
+        <div>
+            {bulbstatus? <img src="https://img.icons8.com/?size=100&id=20182&format=png&color=000000" /> : 
+                         <img src="https://img.icons8.com/?size=100&id=20183&format=png&color=000000"/>
+        }
+        </div>
+    )  
+}
+
+
+
+function BulbSwitch({setLightON, currentStatus}) {
+    console.log('Switch:',currentStatus)
+
+    function onOff() {
+        setLightON(statuss=>!statuss)
+        
+    }
+    return(
+        <div>
+            <button style={{marginTop:20}} onClick={onOff}>{currentStatus?'ON':'OFF'}</button>
+        </div>
+    )
+    
+}
+
 
 
   

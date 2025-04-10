@@ -313,7 +313,7 @@ function App() {
 
     return(
         <div>
-            <ScrollOnMount/>
+            <Appp/>
 
 
         </div> 
