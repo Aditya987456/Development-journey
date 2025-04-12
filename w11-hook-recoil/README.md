@@ -14,3 +14,24 @@ Custom hooks in React are a powerful feature that allows you to encapsulate and 
 * usePrev
 * uselsOnline
 * useDebounce
+
+
+##
+
+## ? when to use component vs custom hooks?
+
+* Is this focused on UI rendering? If yes, use a React Component.
+
+* Is this abstracting reusable logic? If yes, use a Custom Hook.
+
+
+
+# 
+
+
+
+# Custom Hook vs React Component
+
+* Custom Hooks: These are functions that start with use (e.g., useFetch, useState, useEffect) and are not meant to be rendered as components. They are meant to encapsulate reusable logic and should only be called within React functional components or other custom hooks.
+
+* React Components: These are functions (or classes) that return JSX and are intended to be rendered, like < MyComponent />.
