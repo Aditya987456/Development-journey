@@ -1,35 +1,74 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+
+//------------------ ## Creating Custom hook   ------------------
+//  useCounter custom hook-
+
+
+//custom hook  --->  JS function that can use React hooks internally ....
+function useCounter() {
+  const [ count, setCount ]= useState(0)
+
+  function IncreaseCounter() {
+    setCount(c=>c+1)
+  }
+
+  return {
+    countValue:count,
+    IncreaseCounter:IncreaseCounter
+  }
+
 }
 
-export default App
+
+
+//now component is very clean... after making a new component counter app that will handle with my custom hook here i just use component.<counterApp/>
+
+function App() {
+  
+  return(
+    <div>
+      <CounterApp/>
+      <CounterApp/>
+      <CounterApp/>
+      <CounterApp/>
+
+      {/*here all 4 have different ** independent variable **  here can use multiple component but value on each counter is separate i.e not affect on others. */}
+      
+    </div>
+  )  
+}
+
+
+function CounterApp() {
+  const {countValue, IncreaseCounter}=useCounter()
+
+  return (
+    <div>
+      <button onClick={IncreaseCounter} >Increase value = {countValue}</button>
+    </div>
+  )
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default App;
