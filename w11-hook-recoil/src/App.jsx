@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
@@ -157,6 +157,64 @@ console.log('\n')
 // }
 
 console.log('\n')
+
+
+
+
+
+
+
+
+
+
+
+// ###########--------------------------------  useDebounce hook  -----------------------------###############
+
+import { debounceHook } from './hooks/debounce'
+
+function App() {
+
+  const [text, setText ]=useState("")
+
+
+  //here if the text input is change then rerender happens becz of the setText and then ..
+  function Change(e) {
+    setText(e.target.value)
+  }
+
+
+/* --------------------------------------IMPORTANT POINTS -------------------------------------------------
+and the DebounceValue take the input from debounce hook which gives input after the delay time i.e typing is delay for
+specified time therefor debouncehook gives result i.e ---> we have to useEffect hook which will we called only 
+if the delaytime exceed during typing that means now we have to make call to backend
+$$$  that is we use debounce hook that helps to not directly calls the expensive operations just wait for some time then call
+*/
+
+const delaytime=200
+  const DebounceValue=debounceHook(text, delaytime)
+
+
+  useEffect( ()=>{
+  // Perform API call or any action here with debouncedValue  --> i.e here now run the expensive operations...
+  //only when debounce value will change
+    console.log('backend request --> expensive operations...') 
+  
+
+  },[DebounceValue])
+
+
+
+
+  return (
+
+    <div>
+      <input type="text"  onChange={Change} placeholder='search here'/>
+      <button>Search</button>
+      <div>{DebounceValue}</div>
+    </div>
+  )
+  
+}
 
 
 
