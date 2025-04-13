@@ -65,3 +65,56 @@ setInterval is Native JavaScript:
 * React's useEffect monitors changes to debouncedValue and executes the API call logic accordingly.
 
 * This debounce mechanism optimizes performance and ensures better resource management both in the frontend and backend.
+
+
+---
+<br>
+
+>usePrev -> important article... <br>
+[usePrev hook better ](https://giacomocerquone.com/blog/life-death-useprevious-hook/)
+
+
+> [hooks explore](https://usehooks.com/)
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+ ---
+
+>## useIsOnline hook
+
+
+
+
+```import { useEffect, useState } from 'react';
+
+const useIsOnline = () => {
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const updateOnlineStatus = () => setIsOnline(navigator.onLine);
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    // Clean up the event listeners on component unmount
+    return () => {
+      window.removeEventListener('online', updateOnlineStatus);
+      window.removeEventListener('offline', updateOnlineStatus);
+    };
+  }, []);
+
+  return isOnline;
+};
+
+export default useIsOnline;
+```
