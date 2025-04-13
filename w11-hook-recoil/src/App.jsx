@@ -97,8 +97,9 @@ function App() {
 
   const [num, setNum]=useState(1)
 
-  //calling cutom hook to take data...
-  const { posts, loading }=useFetch('https://jsonplaceholder.typicode.com/posts/'+num)
+  //calling cutom hook to take data...+ url+ time for retrying in second.
+  const retryTime=2    
+  const { posts, loading }=useFetch('https://jsonplaceholder.typicode.com/posts/'+num , retryTime)
 
   if (loading) {
     return <div>LOADING...</div>
