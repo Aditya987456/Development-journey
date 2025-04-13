@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 
 
+
 //------------------ ## Creating Custom hook   ------------------
 //  useCounter custom hook-
 
@@ -91,37 +92,71 @@ console.log('\n')
 
 //-------------------------**       useFetch hook --->  take url as i/p      **-----------------------------------
 
-import { useFetch } from './hooks/useFetch';
+// import { useFetch } from './hooks/useFetch';
 
-function App() {
+// function App() {
 
-  const [num, setNum]=useState(1)
+//   const [num, setNum]=useState(1)
 
-  //calling cutom hook to take data...+ url+ time for retrying in second.
-  const retryTime=2    
-  const { posts, loading }=useFetch('https://jsonplaceholder.typicode.com/posts/'+num , retryTime)
+//   //calling cutom hook to take data...+ url+ time for retrying in second.
+//   const retryTime=2    
+//   const { posts, loading }=useFetch('https://jsonplaceholder.typicode.com/posts/'+num , retryTime)
 
-  if (loading) {
-    return <div>LOADING...</div>
-  }
+//   if (loading) {
+//     return <div>LOADING...</div>
+//   }
 
 
+//   return (
+//     <div>
 
-  return (
-    <div>
+//       <button onClick={()=>{setNum(1)}}>task-1</button>
+//       <button onClick={()=>{setNum(2)}}>task-2</button>
+//       <button onClick={()=>{setNum(3)}}>task-3</button>
+//       <button onClick={()=>{setNum(4)}}>task-4</button>
 
-      <button onClick={()=>{setNum(1)}}>task-1</button>
-      <button onClick={()=>{setNum(2)}}>task-2</button>
-      <button onClick={()=>{setNum(3)}}>task-3</button>
-      <button onClick={()=>{setNum(4)}}>task-4</button>
-
-      <p>{JSON.stringify(posts)}</p>  
+//       <p>{JSON.stringify(posts)}</p>  
      
-    </div>
-  ) 
-}
+//     </div>
+//   ) 
+// }
+
+console.log('\n')
 
 
+
+
+
+
+
+
+
+
+// ###########--------------------------------  usePrev hook  -----------------------------###############
+
+// import { useprev } from './hooks/useprev'
+
+
+// function App() {
+
+//   const [count, setCount ]=useState(0)
+
+//   let previousVal=useprev(count)
+
+
+//   return(
+//     <div>
+//       <h1>Counter with usePrev custom hook</h1>
+//       <div>Current value : {count}</div>
+//       <div>Previous value : {previousVal}</div>
+//       <button onClick={()=>{ setCount(c=>c+1) } }>increment</button>
+//       <button onClick={()=>{ setCount(c=>c-1) } }>decrement</button>
+//     </div>
+//   )
+  
+// }
+
+console.log('\n')
 
 
 
