@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 
 
@@ -229,17 +229,79 @@ console.log('\n')
 
 //----------------*****---*****--------------  RECOIL in react ------------------------------------------------
 
+//  even if we use context api then it will helps to avoid props drilling but not helps to minimize the unnecessary renders...
+//  ####   contextApi    v/s     Recoil
+
+console.log('firstly testing with context Api.')
+//context api...
+// import { Appp } from './contextAPI'
+
+// function App() {
+
+
+//   return(
+//    <div>
+//     <Appp/>
+//    </div>
+//   )
+// }
+
+
+
+
+
+console.log('Now using recoil....')
+
+//  ----------------***    recoil    ****------------
+
+import { RecoilRoot } from "recoil";
 
 function App() {
 
 
   return(
-    <div>
+    <RecoilRoot>
 
-    </div>
+    </RecoilRoot>
   )
-  
 }
+
+
+
+
+const Increase=()=>{
+
+  return <div>
+
+  </div>
+}
+
+
+const Decrease=()=>{
+
+  return <div>
+    
+  </div>
+}
+
+
+const CurrentVal=()=>{
+
+
+  return <div>
+    
+  </div>
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
