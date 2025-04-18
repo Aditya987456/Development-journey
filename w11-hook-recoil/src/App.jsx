@@ -233,7 +233,7 @@ console.log('\n')
 //  ####   contextApi    v/s     Recoil
 
 console.log('firstly testing with context Api.')
-//context api...
+// context api...
 // import { Appp } from './contextAPI'
 
 // function App() {
@@ -254,13 +254,21 @@ console.log('Now using recoil....')
 
 //  ----------------***    recoil    ****------------
 
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
+import { CounterAtom } from './store/atoms/counter'
+
+
 
 function App() {
 
 
   return(
     <RecoilRoot>
+
+      
+      <Increase/>
+      <Decrease/>
+      <CurrentVal/>
 
     </RecoilRoot>
   )
@@ -270,28 +278,40 @@ function App() {
 
 
 const Increase=()=>{
+  const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
 
   return <div>
+    <button onClick={ ()=>{ setValue(c=>c+1 )} }>Increase</button>
 
   </div>
 }
 
 
 const Decrease=()=>{
+  const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
 
   return <div>
+    <button onClick={()=>{ setValue(c=>c-1 )} }>Decrease</button>
     
   </div>
 }
 
 
 const CurrentVal=()=>{
+ 
+    const value = useRecoilValue(CounterAtom);
+   // console.log("Current Value:", value); // Debugging log
+   
+    return <div>{value}</div>;
+ 
 
-
-  return <div>
-    
-  </div>
 }
+
+
+
+
+
+
 
 
 
