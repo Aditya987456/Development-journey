@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { memo, useContext, useEffect, useState } from 'react'
 
 
 
@@ -254,58 +254,128 @@ console.log('Now using recoil....')
 
 // ####### ----------------***    recoil    ****------------
 
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
-import { CounterAtom } from './store/atoms/counter'
+// import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
+// import { CounterAtom } from './store/atoms/counter'
 
 
+
+// function App() {
+
+
+//   return(
+//     <RecoilRoot>
+
+      
+//       <Increase/>
+//       <Decrease/>
+//       <CurrentVal/>
+
+//     </RecoilRoot>
+//   )
+// }
+
+
+// const Increase=()=>{
+//   const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
+
+//   return <div>
+//     <button onClick={ ()=>{ setValue(c=>c+1 )} }>Increase</button>
+
+//   </div>
+// }
+
+
+// const Decrease=()=>{
+//   const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
+
+//   return <div>
+//     <button onClick={()=>{ setValue(c=>c-1 )} }>Decrease</button>
+    
+//   </div>
+// }
+
+
+// const CurrentVal=()=>{
+ 
+//     const value = useRecoilValue(CounterAtom);
+//    // console.log("Current Value:", value); // Debugging log
+
+//     return <div>{value}</div>;
+ 
+
+// }
+
+
+
+
+console.log('Memo in react....')
+//###########------------ ***Memo*** :  we can also improve less re-rendering using memo...
 
 function App() {
 
-
   return(
-    <RecoilRoot>
-
-      
-      <Increase/>
-      <Decrease/>
-      <CurrentVal/>
-
-    </RecoilRoot>
+    <Counter/>
   )
 }
 
 
 
 
-const Increase=()=>{
-  const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
+function Counter() {
+  const [count, setCount ]=useState(0)
 
-  return <div>
-    <button onClick={ ()=>{ setValue(c=>c+1 )} }>Increase</button>
+  
 
-  </div>
+
+  return(
+    <div>
+      <CurrentcountVal count={count} />
+      <Increase setCount={setCount} />
+      <Decrease setCount={setCount} />
+    </div>
+  )
 }
 
 
-const Decrease=()=>{
-  const setValue=useSetRecoilState(CounterAtom)  // write only state -->  not subscribes only setter...
 
-  return <div>
-    <button onClick={()=>{ setValue(c=>c-1 )} }>Decrease</button>
-    
-  </div>
-}
+//$$$ ********** Memoized CurrentCountval component to prevent unnecessary re-renders
+const CurrentcountVal= memo(({count})=>{
+
+  return(
+    <div>
+        <h1>{count}</h1>
+    </div>
+  )}
+)
 
 
-const CurrentVal=()=>{
+const Increase=memo(({setCount})=>{
+
+  function IncreaseCount() {
+    setCount(c=>c+1)
+  }
  
-    const value = useRecoilValue(CounterAtom);
-   // console.log("Current Value:", value); // Debugging log
+  return <div>
+    <button onClick={IncreaseCount} >Increase</button>
+  </div>
+})
 
-    return <div>{value}</div>;
+
+const Decrease=memo(({setCount})=>{
+
+  function DecreaseCount() {
+    setCount(c=>c-1)
+  }
  
+  return <div>
+    <button onClick={DecreaseCount} >Decrease</button>
+  </div>
+})
 
-}
+
+
+
+
 
 
 
