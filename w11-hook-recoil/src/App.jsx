@@ -252,7 +252,7 @@ console.log('firstly testing with context Api.')
 
 console.log('Now using recoil....')
 
-//  ----------------***    recoil    ****------------
+// ####### ----------------***    recoil    ****------------
 
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
 import { CounterAtom } from './store/atoms/counter'
@@ -301,7 +301,7 @@ const CurrentVal=()=>{
  
     const value = useRecoilValue(CounterAtom);
    // console.log("Current Value:", value); // Debugging log
-   
+
     return <div>{value}</div>;
  
 
