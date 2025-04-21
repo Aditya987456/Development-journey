@@ -1,4 +1,6 @@
 import { memo, useContext, useEffect, useState } from 'react'
+import { RecoilRoot,useRecoilValue, useSetRecoilState } from 'recoil'
+import { CounterAtom, isEvenSelector } from './store/atoms/counter'
 
 
 
@@ -311,67 +313,131 @@ console.log('Now using recoil....')
 console.log('Memo in react....')
 //###########------------ ***Memo*** :  we can also improve less re-rendering using memo...
 
-function App() {
+// function App() {
 
-  return(
-    <Counter/>
-  )
-}
-
-
+//   return(
+//     <Counter/>
+//   )
+// }
 
 
-function Counter() {
-  const [count, setCount ]=useState(0)
+
+
+// function Counter() {
+//   const [count, setCount ]=useState(0)
 
   
 
 
+//   return(
+//     <div>
+//       <CurrentcountVal count={count} />
+//       <Increase setCount={setCount} />
+//       <Decrease setCount={setCount} />
+//     </div>
+//   )
+// }
+
+
+
+// //$$$ ********** Memoized CurrentCountval component to prevent unnecessary re-renders
+// const CurrentcountVal= memo(({count})=>{
+
+//   return(
+//     <div>
+//         <h1>{count}</h1>
+//     </div>
+//   )}
+// )
+
+
+// const Increase=memo(({setCount})=>{
+
+//   function IncreaseCount() {
+//     setCount(c=>c+1)
+//   }
+ 
+//   return <div>
+//     <button onClick={IncreaseCount} >Increase</button>
+//   </div>
+// })
+
+
+// const Decrease=memo(({setCount})=>{
+
+//   function DecreaseCount() {
+//     setCount(c=>c-1)
+//   }
+ 
+//   return <div>
+//     <button onClick={DecreaseCount} >Decrease</button>
+//   </div>
+// })
+
+
+
+console.log('Selectors in recoil....')
+
+
+function App() {
+
+  return(
+
+    <RecoilRoot>
+
+      <Buttons/>
+      <Counter/>
+      <IsEven/>
+
+    </RecoilRoot>
+  )
+}
+
+
+const Buttons=()=>{
+
+  const setval=useSetRecoilState(CounterAtom)
+
+  function IncreaseVal() {
+    
+    setval(c=>c+2)
+  }
+
+  function DecreaseVal() {
+    
+    setval(c=>c-1)
+  }
+    
+
   return(
     <div>
-      <CurrentcountVal count={count} />
-      <Increase setCount={setCount} />
-      <Decrease setCount={setCount} />
+      <button onClick={IncreaseVal}>Increase</button>
+      <button onClick={DecreaseVal}>Decrease</button>
     </div>
   )
 }
 
 
 
-//$$$ ********** Memoized CurrentCountval component to prevent unnecessary re-renders
-const CurrentcountVal= memo(({count})=>{
+const Counter=()=>{
 
-  return(
-    <div>
-        <h1>{count}</h1>
-    </div>
-  )}
-)
+  const countVal=useRecoilValue(CounterAtom)
 
-
-const Increase=memo(({setCount})=>{
-
-  function IncreaseCount() {
-    setCount(c=>c+1)
-  }
- 
   return <div>
-    <button onClick={IncreaseCount} >Increase</button>
+    <h1>{countVal}</h1>  
   </div>
-})
+}
 
 
-const Decrease=memo(({setCount})=>{
 
-  function DecreaseCount() {
-    setCount(c=>c-1)
-  }
- 
+const IsEven=()=>{
+  const IsCountEven=useRecoilValue(isEvenSelector)
+
   return <div>
-    <button onClick={DecreaseCount} >Decrease</button>
+    Even:{IsCountEven===0? "Yes":"No"}
   </div>
-})
 
+}
 
 
 
