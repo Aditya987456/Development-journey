@@ -1,0 +1,13 @@
+# Node.js dependencies
+node_modules/
+
+# TypeScript build output
+dist/
+build/
+
+# Environment variables (contains sensitive info)
+.env
+
+# Logs & temporary files
+*.log
+tmp/
