@@ -49,5 +49,163 @@ function delayfunc(fn:()=>void) {
 }
 
 delayfunc( function greet() {
-    console.log('hello --- jiii')
+    console.log('hello --- jiii 1 sec baad wala hu.')
 })
+
+
+//$$---------- ************  Interfaces  *************-------------------
+
+console.log('------------------------------interfaces---------------------------------')
+//assignment -2 also.
+
+interface User{
+    name:string,
+    age:number,
+    email:string,
+    address?:{                    //making address optional here.
+        city:string,
+        pincode:number
+    }
+}
+
+function checkAge(person:User):Boolean {
+    return person.age>18? true: false;
+}
+
+let user:User={
+    name:"Aditya raj",
+    age:21,
+    email:"adityarajxdev"
+}
+
+
+//now checking age...
+
+const output=checkAge(user)
+console.log('can vote : ', output)
+
+
+
+
+//####################### ------- Implements concept -------- ###############
+console.log('------------------------------interfaces -> implements with class---------------------------------')
+interface Person{
+    name:string;
+    age:number;
+    greet(phrase:string):void
+    //greeet:(phrase:string)=>void      //both greet and greeet is same
+}
+
+class Employee implements Person{
+    name:string;
+    age:number;
+
+    constructor(n:string, a:number){
+        this.age=a
+        this.name=n
+    }
+
+    greet(phrase: string): void {
+        console.log(`${phrase} ji ${this.name}`)
+    }
+
+}
+
+const myobj=new Employee("buttan", 21)
+console.log(myobj.age)
+console.log(myobj.name)
+myobj.greet("Namaste")
+
+
+
+console.log('------------------------------ Inheritence in class : JS concept ---------------------------------')
+//####################### ------- Inheritence concept--> like super(), extends like things... -------- ###############
+
+/*
+
+
+//js concept---  only in .js file i just written here for revise
+
+class Animal {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Speak() {
+        console.log(`hii janwar ${this.name} jii , Your age is ${this.age}`);
+    }
+}
+
+//inheriting the animal class in dog class i.e dog is child class and animal is parent class...
+
+class Dog extends Animal {
+    constructor(name, age, color) {
+        super(name, age); //calling the parent constructor i.e baap to hona chahiya tabhi beta hoga...
+        this.color = color;
+    }
+
+    bark() {
+        super.Speak();  //calling speak of parent in child class
+        console.log(
+            `This dog name is ${this.name} and age is ${this.age} also his color of skin is ${this.color}`,
+        );
+    }
+}
+
+//now using the objjj
+
+const objpaglu = new Dog("moti", 45, "red");
+console.log(objpaglu.age);
+objpaglu.bark();
+console.log(objpaglu.color);
+console.log(objpaglu.name);
+objpaglu.Speak();
+//console.log(objpaglu.Speak)
+
+
+
+*/
+
+
+
+
+
+console.log('------------------------------ Abstract class ---------------------------------')
+
+abstract class Vehicle{
+
+    abstract drive():void   //must be overridden by those who extends it...
+
+    greet(): void {
+        console.log(`Hello, my name is ${this.name}.`);
+      }
+
+    abstract name:string
+    
+}
+
+
+
+class Bike extends Vehicle{
+
+    //dono abstract wala use kar liya ab greet() use nahi kare fir bhi koi error nahi dega...
+    drive(): void {
+        console.log('abstract wala drive function')
+    }
+
+   
+    name='splender'   //i know iska use nahi ho raha hai but abstract me hai to we have to overridden it...
+    constructor(n:string){
+        super()
+        this.name=n
+    }
+
+    bikename():void{
+        console.log(`Mt bike name is ${this.name}`)
+    }
+}
+
+
+const abObj=new Bike("hero")
+abObj.bikename()
