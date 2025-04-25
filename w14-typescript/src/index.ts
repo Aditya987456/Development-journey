@@ -209,3 +209,79 @@ class Bike extends Vehicle{
 
 const abObj=new Bike("hero")
 abObj.bikename()
+
+
+
+
+
+// ***************************   Types--> unions and intersections   ************************************************
+
+
+interface Shape{
+    width:number;
+    height:number;
+    hello:number
+}
+
+interface Box{
+    name:string;
+    size:number;
+    hello:number
+}
+
+// -----intersection(&)
+
+type ShapeBox=Shape &  Box
+//$$$ intersection i.e from the infinite sets of both shape and box interfaces there is one set is available in 
+//both the set where all 5 values is there in both interface's set...
+
+const dabba:ShapeBox={
+    hello:45,
+    width:45,
+    height:45,
+    name:"ggg",
+    size:45,
+}
+
+
+
+
+
+
+//----------  union(|)
+
+type ShapeBoxes=Shape |  Box
+
+const dabbaa:ShapeBoxes={
+    hello:45,
+    width:45,
+    height:45,
+}
+
+
+
+
+//******************************  array in TS  ************************* */
+
+//Given an array of positive integers as input, return the maximum value in the array
+//given array- 
+const arr=[1,2,5,6,4,8,9,7]
+
+function maxVal(num:number[]) {
+    let maximum=num[0]
+
+    num.forEach( (arr)=>{arr>maximum? maximum=arr: maximum=maximum})
+    return maximum;
+}
+const aans=maxVal(arr)
+console.log(aans)
+
+
+
+
+//Given a list of users, filter out the users that are legal (greater than 18 years of age)
+
+
+
+
+
